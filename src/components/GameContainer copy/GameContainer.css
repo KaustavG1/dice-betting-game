@@ -1,0 +1,146 @@
+.container {
+  height: 600px;
+  max-width: 1000px;
+  background-color: #fff;
+  margin: 50px auto;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  justify-content: center;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.timer {
+  padding-top: 30px;
+  font-size: large;
+}
+
+.player-balance {
+  padding-top: 10px;
+  font-size: x-large;
+}
+
+.game-instructions {
+  padding-top: 10px;
+  font-style: italic;
+}
+
+.dice-roll {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.dice-roll img {
+  height: 100px;
+  width: 100px;
+  margin: 50px;
+}
+
+.bet-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+.bet {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 30px;
+}
+
+.bet img {
+  height: 100px;
+  width: 100px;
+  padding-bottom: 10px;
+}
+
+@media only screen and (max-width: 960px)   {
+  .container {
+    display: flex;
+    max-width: 900px;
+    min-height: 600px;
+    flex-direction: column;
+  }
+
+  .dice-roll {
+    padding: 10px;
+  }
+
+  .container img {
+    height: 50px;
+    width: 50px;
+  }
+
+  .bet {
+    padding-bottom: 10px;
+  }
+
+  .bet img {
+    align-self: center;
+  }
+}
+
+@media only screen and (max-width: 768px)   {
+  .container {
+    display: flex;
+    max-width: 300px;
+    min-height: 600px;
+    flex-direction: column;
+    padding: 50px 0px;
+  }
+
+  .dice-roll {
+    padding: 10px;
+  }
+
+  .bet-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* padding-bottom: 100px; */
+  }
+
+  .container img {
+    height: 50px;
+    width: 50px;
+  }
+
+  .bet {
+    padding-bottom: 10px;
+  }
+
+  .bet img {
+    align-self: center;
+  }
+}
+
+.rolling {
+  animation-name: roll;
+  animation-duration: 2s;
+  transition: transform 1s ease;
+}
+
+@keyframes roll {
+  from {
+    transform: translate3d(0, 0, 0)
+  }
+  15% {
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+  30% {
+    transform: translate3d(12%, 0, 0) rotate3d(0, 0, 1, 7deg);
+  }
+  45% {
+    transform: translate3d(-12%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+  60% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 5deg);
+  }
+  75% {
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -3deg);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}

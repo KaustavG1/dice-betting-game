@@ -1,0 +1,12 @@
+.bet-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+@media only screen and (max-width: 768px)   {
+  .bet-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

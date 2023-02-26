@@ -1,0 +1,14 @@
+.timer {
+  padding-top: 30px;
+  font-size: large;
+}
+
+.player-balance {
+  padding-top: 10px;
+  font-size: x-large;
+}
+
+.game-instructions {
+  padding-top: 10px;
+  font-style: italic;
+}

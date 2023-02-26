@@ -1,0 +1,25 @@
+.bet {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 30px;
+}
+
+.bet img {
+  padding-bottom: 10px;
+}
+
+.bet-disabled {
+  opacity: 0.4;
+}
+
+@media only screen and (max-width: 960px)   {
+  .bet {
+    padding-bottom: 10px;
+  }
+
+  .bet img {
+    align-self: center;
+    height: 50px;
+    width: 50px;
+  }
+}
