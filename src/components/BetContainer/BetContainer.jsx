@@ -22,25 +22,18 @@ export default function BetContainer({
   six,
   setSix,
   isDisabled,
-  // temp,
-  // setTemp
+  tempMoney,
+  setTempMoney
 }) {
 
   return (
     <div className="bet-container">
-      <BetItem key={1} value={1} icon={Dice1} isDisabled={isDisabled} bet={one} setBet={setOne}/>
-      <BetItem key={2} value={2} icon={Dice2} isDisabled={isDisabled} bet={two} setBet={setTwo}/>
-      <BetItem key={3} value={3} icon={Dice3} isDisabled={isDisabled} bet={three} setBet={setThree}/>
-      <BetItem key={4} value={4} icon={Dice4} isDisabled={isDisabled} bet={four} setBet={setFour}/>
-      <BetItem key={5} value={5} icon={Dice5} isDisabled={isDisabled} bet={five} setBet={setFive}/>
-      <BetItem key={6} value={6} icon={Dice6} isDisabled={isDisabled} bet={six} setBet={setSix}/>
-
-      {/* <BetItem key={1} value={1} icon={Dice1} isDisabled={isDisabled} bet={temp} setBet={setTemp}/>
-      <BetItem key={2} value={2} icon={Dice2} isDisabled={isDisabled} bet={temp} setBet={setTemp}/>
-      <BetItem key={3} value={3} icon={Dice3} isDisabled={isDisabled} bet={temp} setBet={setTemp}/>
-      <BetItem key={4} value={4} icon={Dice4} isDisabled={isDisabled} bet={temp} setBet={setTemp}/>
-      <BetItem key={5} value={5} icon={Dice5} isDisabled={isDisabled} bet={temp} setBet={setTemp}/>
-      <BetItem key={6} value={6} icon={Dice6} isDisabled={isDisabled} bet={temp} setBet={setTemp}/> */}
+      <BetItem key={1} value={1} icon={Dice1} isDisabled={isDisabled} tempMoney={tempMoney} setTempMoney={setTempMoney} bet={one} setBet={setOne}/>
+      <BetItem key={2} value={2} icon={Dice2} isDisabled={isDisabled} tempMoney={tempMoney} setTempMoney={setTempMoney} bet={two} setBet={setTwo}/>
+      <BetItem key={3} value={3} icon={Dice3} isDisabled={isDisabled} tempMoney={tempMoney} setTempMoney={setTempMoney} bet={three} setBet={setThree}/>
+      <BetItem key={4} value={4} icon={Dice4} isDisabled={isDisabled} tempMoney={tempMoney} setTempMoney={setTempMoney} bet={four} setBet={setFour}/>
+      <BetItem key={5} value={5} icon={Dice5} isDisabled={isDisabled} tempMoney={tempMoney} setTempMoney={setTempMoney} bet={five} setBet={setFive}/>
+      <BetItem key={6} value={6} icon={Dice6} isDisabled={isDisabled} tempMoney={tempMoney} setTempMoney={setTempMoney} bet={six} setBet={setSix}/>
     </div>
   )
 }

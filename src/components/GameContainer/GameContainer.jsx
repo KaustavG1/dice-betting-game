@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import BetContainer from '../BetContainer/BetContainer'
 import DiceRoll from '../DiceRoll/DiceRoll'
 import InfoText from '../InfoText/InfoText'
+import { player_initial_balance } from '../../constants/balance'
 import calculateResult from '../../utils/calculateResult'
 import duration from '../../constants/duration'
 import randomNumberCreator from '../../utils/randomNumberCreator'
+import Reset from '../../assets/reset.png'
 import './GameContainer.css'
 
 export default function GameContainer() {
@@ -16,14 +18,17 @@ export default function GameContainer() {
   const [ four, setFour ] = useState(0)
   const [ five, setFive ] = useState(0)
   const [ six, setSix ] = useState(0)
-  // const [ temp, setTemp ] = useState({})
   const [ isDisabled, setDisabled ] = useState(false)
   const [ randomFace, setRandomFace ] = useState(1)
   const [ balance, setBalance ] = useState(0)
-  const [ money, setMoney ] = useState(1)
+  const [ money, setMoney ] = useState(player_initial_balance)
   const [ hasWon, setWon ] = useState(false)
+  const [ betAmount, setBetAmount ] = useState(0)
+  const [ tempMoney, setTempMoney ] = useState(player_initial_balance)
 
   const resetGame = () => {
+    setStep(1)
+    setTime(duration.betting)
     setOne(0)
     setTwo(0)
     setThree(0)
@@ -31,10 +36,15 @@ export default function GameContainer() {
     setFive(0)
     setSix(0)
     setDisabled(false)
+    setBalance(0)
+    setMoney(player_initial_balance)
+    setBetAmount(0)
+    setTempMoney(player_initial_balance)
   }
 
   const getResult = () => {
     // Calculate if user bet on the amount and if so how much
+    // console.log({randomFace, one, two, three, four, five, six})
     let betAmt
     switch(randomFace) {
       case 1:
@@ -59,10 +69,14 @@ export default function GameContainer() {
         break
     }
 
-    console.log(betAmt)
+    setBetAmount(betAmt)
+
     setWon(Boolean(betAmt))
 
-    setMoney(calculateResult(Boolean(betAmt), betAmt, balance, money))
+    const result = calculateResult(Boolean(betAmt), betAmt, balance, money)
+
+    setMoney(result)
+    setTempMoney(result)
   }
 
   useEffect(() => {
@@ -81,7 +95,7 @@ export default function GameContainer() {
 
       if (time <= 0) {
         clearTimeout(timer)
-        setBalance(one + two + three + four +five + six)
+        setBalance(one + two + three + four + five + six)
         setTime(duration.dice_rolling)
         setStep(step => step += 1)
       }
@@ -123,8 +137,8 @@ export default function GameContainer() {
       }
 
       if (money <= 0) {
-        // setStep(4)
-        console.log('HHH')
+        setStep(4)
+        setTime(0)
       }
 
       return () => clearTimeout(timer)
@@ -133,7 +147,13 @@ export default function GameContainer() {
 
   return (
     <div className="container">
-      <InfoText time={time} balance={balance} money={money} step={step} hasWon={hasWon}/>
+      <img
+        src={Reset}
+        alt="New game"
+        className={(money) ? "reset-disabled" : "reset "}
+        onClick={resetGame}
+      />
+      <InfoText time={time} bet={betAmount} money={money} step={step} hasWon={hasWon}/>
       <DiceRoll step={step} value={randomFace}/>
       <BetContainer
         step={step}
@@ -151,8 +171,8 @@ export default function GameContainer() {
         setSix={setSix}
         isDisabled={isDisabled}
         setDisabled={setDisabled}
-        // temp={temp}
-        // setTemp={setTemp}
+        tempMoney={tempMoney}
+        setTempMoney={setTempMoney}
       />
     </div>
   )

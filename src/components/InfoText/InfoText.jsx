@@ -2,7 +2,7 @@ import React from 'react'
 import content from '../../constants/locale'
 import './InfoText.css'
 
-export default function InfoText({ time, money, balance, step, hasWon }) {
+export default function InfoText({ time, money, bet, step, hasWon }) {
   const getInstruction = () => {
     if (step === 1) {
       return content.game_instructions.place_bets
@@ -13,14 +13,11 @@ export default function InfoText({ time, money, balance, step, hasWon }) {
     }
 
     if (hasWon) {
-      return `${content.game_instructions.win_message}${balance}`
+      return `${content.game_instructions.win_message}${bet * 2}`
     }
 
     if (!hasWon) {
-      return `${content.game_instructions.lose_message}${balance}`
-    }
-    if (!Boolean(money)) {
-      return content.game_instructions.zero_balance
+      return `${content.game_instructions.lose_message}${bet}`
     }
   }
 

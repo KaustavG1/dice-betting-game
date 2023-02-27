@@ -7,9 +7,11 @@ export default function calculateResult(betPlaced, betAmount, betSum, total) {
   // Tripple the bets placed on rn and subtract sum of all bets placed
   // One additional value of bet amount will be deducted, so tripple bet
   if (betPlaced) {
-    return total + (betAmount * 3) - betSum
+    const result = total + (betAmount * 3) - betSum
+    return (result <= 0) ? 0 : result
   }
 
   // Else, subtract sum of all bets placed from money
-  return total - betSum
+  const result = total - betSum
+  return (result <= 0) ? 0 : result
 }
